@@ -17,9 +17,9 @@ data class DistrictDto(
     @SerialName("dropOffAvailability")
     val dropOffAvailability: Boolean,
     @SerialName("isBusy")
-    val isBusy: Boolean,
+    val isBusy: Boolean? = null,
     @SerialName("notAllowedBulkyOrders")
-    val notAllowedBulkyOrders: Boolean,
+    val notAllowedBulkyOrders: Boolean? = null,
     @SerialName("pickupAvailability")
     val pickupAvailability: Boolean,
     @SerialName("zoneId")
