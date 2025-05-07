@@ -1,6 +1,9 @@
 package com.bosta.task.di
 
+import com.bosta.task.data.repositories.CitiesRepositoryImpl
 import com.bosta.task.data.services.CitiesService
+import com.bosta.task.domain.repositories.CitiesRepository
+import com.bosta.task.domain.usecases.GetAllCitiesUseCase
 import com.bosta.task.utils.Constants.BASE_URL
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -40,5 +43,15 @@ object NetworkModule {
     @Singleton
     fun provideCitiesService(retrofit: Retrofit): CitiesService =
         retrofit.create(CitiesService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideRepository(citiesService: CitiesService): CitiesRepository =
+        CitiesRepositoryImpl(citiesService)
+
+    @Provides
+    @Singleton
+    fun provideUseCase(citiesRepository: CitiesRepository): GetAllCitiesUseCase =
+        GetAllCitiesUseCase(citiesRepository)
 
 }
