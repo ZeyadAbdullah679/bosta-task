@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Bosta Task</string>
     <string name="toggle">Toggle</string>
+    <string name="search_cities_or_districts">Search cities or districts</string>
+    <string name="no_data_found">No data found</string>
+    <string name="error_occurred">Error occurred</string>
+    <string name="error_message">Error while fetching data</string>
+    <string name="choose_the_delivery_area">Choose the delivery area</string>
 </resources>
