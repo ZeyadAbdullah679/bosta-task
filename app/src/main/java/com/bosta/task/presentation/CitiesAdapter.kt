@@ -44,8 +44,14 @@ class CitiesAdapter : ListAdapter<CityItem, CitiesAdapter.CityViewHolder>(CityDi
         }
 
         b.cityHeader.setOnClickListener {
-            val updatedList = currentList.toMutableList()
-            updatedList[position] = city.copy(isExpanded = !city.isExpanded)
+            // Ensure position is valid and submit a new copied list
+            val updatedList = currentList.mapIndexed { index, item ->
+                if (index == holder.adapterPosition) {
+                    item.copy(isExpanded = !item.isExpanded)
+                } else {
+                    item
+                }
+            }
             submitList(updatedList)
         }
     }
